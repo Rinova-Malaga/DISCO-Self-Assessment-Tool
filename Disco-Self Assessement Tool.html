@@ -8,6 +8,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <link rel="stylesheet" href="assessementStyles.css">
+    <script>
+      function sendHeightToParent() {
+          var height = document.documentElement.scrollHeight;
+          window.parent.postMessage({ type: 'resizeIframe', height: height }, '*');
+      }
+
+      window.onload = sendHeightToParent;
+      window.onresize = sendHeightToParent;
+    </script>
   </head>
   <body>
     <div class="mainBox" id="mainBox">
