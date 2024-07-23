@@ -186,7 +186,7 @@ word-break: keep-all;
 }
 .sectionContent {
 transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, padding 0.5s ease-in-out;
-max-height: 2000px;
+max-height: 99999px;
 overflow: hidden;
 }
 
