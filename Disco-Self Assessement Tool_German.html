@@ -410,15 +410,15 @@
 
         var score = 0;
         var moduleNames = [
-          "Thematisches Modul 1: Online-Kommunikation</a>", 
+          "Thematisches Modul 1: Online-Kommunikation", 
           "Thematisches Modul 2: Gestaltung gemischter Beratungsformate", 
           "Thematisches Modul 3: Digitale Ressourcen und Tools",
           "Thematisches Modul 4: Sicherheit und Vorschriften in der Blended Guidance"] //list of module names (for string use)
         var sectionLabels = [
-        ["Online Communication"],
-        ["Designing Blended"," Guidance Formats"],
-        ["Digital Resources"," and Tools"],
-        ["Safety & Regulations"," in Blended Guidance"],
+        ["Online-Kommunikation"],
+        ["Gestaltung gemischter"," Beratungsformat"],
+        ["Digitale Ressourcen"," und Tools"],
+        ["Sicherheit und Vorschriften"," in der Blended Guidance"],
         ]
         var sections = document.getElementsByTagName("TNAsection"); //creates a list of sections
         var sectionAverages = []; //creates list for sections averages
@@ -436,7 +436,7 @@
           if ((3 - minimumSectionCount) == 1) {
             var belowMinText = "Sie müssen mindestens 3 Abschnitte ausfüllen. \n \nBitte füllen Sie einen weiteren Abschnitt aus.";
           } else {
-            var belowMinText = "Sie müssen mindestens 3 Abschnitte ausfüllen. \n \nPlease complete " + (3 - minimumSectionCount) + " more sections.";
+            var belowMinText = "Sie müssen mindestens 3 Abschnitte ausfüllen. \n \nBitte füllen Sie " + (3 - minimumSectionCount) + " weitere Abschnitte aus.";
           }
 
           window.alert(belowMinText);
