@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Εργαλείο αυτοαξιολόγησης DISCO</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="assessementStyles.css">
+    <script>
+      function sendHeightToParent() {
+          var height = document.documentElement.scrollHeight;
+          window.parent.postMessage({ type: 'resizeIframe', height: height }, '*');
+      }
+
+      window.onload = sendHeightToParent;
+      window.onresize = sendHeightToParent;
+    </script>
+  </head>
+  <body>
+    <div class="mainBox" id="mainBox">
+      <h1>Εργαλείο αυτοαξιολόγησης DISCO</h1>
+      <br>
+
+      <!-- Container for introduction and instructions -->
+      <!--<div class="introBox"> 
+       
+        <h3>Tool Introduction and Instructions</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>-->
+
+      <form id="quizForm" onsubmit="return calculateResults()">
+
+        <!-- Questionnaire start -->
+        <TNAsection id="Sec1" >
+        <div class="sectionContainer">
+          <div class="sectionHead">
+            <h3>Θεματική ενότητα 1: Online Επικοινωνία</h3>
+            <div class="skipButton" id="skipHide1">
+                <button type="button" onclick="return hideSection('secCont1','skipHide1')">Παράλειψη τμήματος</button>
+            </div>
+          </div>
+          <div class="sectionContent" id="secCont1">
+            <div class="questionContainer">
+              <h4 class="questionDesc">1. Το πόσο προετοιμάζεται ένας σύμβουλος σταδιοδρομίας για μια διαδικτυακή συνεδρία καθοδήγησης δεν επηρεάζει την επιτυχία της συνόδου.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 1" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 1" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">2. Στη διαδικτυακή καθοδήγηση υπάρχουν διάφορες φάσεις. Ποια από τις ακόλουθες φάσεις έρχεται πρώτη;</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 2" required/>Αλλαγή φάσης</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 2" required/>Φάση προσανατολισμού</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 2" required/>Τελική φάση κλεισίματος</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 2" required/>Φάση αποσαφήνισης</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">3. Η οικοδόμηση μιας σχέσης εμπιστοσύνης με τους πελάτες δεν είναι σημαντική για μια συνεδρία καθοδήγησης, καθώς η μετάδοση πληροφοριών είναι το πιο σημαντικό.</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 3" required/>ΣΩΣΤΟ</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 3" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">4. Τι θα μπορούσατε να κάνετε ως σύμβουλος σταδιοδρομίας προκειμένου να θέσετε σε κίνδυνο μια σχέση εμπιστοσύνης μεταξύ σας και ο πελάτης;</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 4" required/>Επαναλαμβάνοντας το περιεχόμενο του πελάτη σας στο δικό σας</p>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 4" required/>Ακούγοντας προσεκτικά</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 4" required/>Επικρίνοντας τον πελάτη για τις αποφάσεις που συνάντησε στο παρελθόν</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">5. Οι επαγγελματίες του επαγγελματικού προσανατολισμού θα πρέπει να προσαρμόσουν μια γενική προσέγγιση για όλους τους πελάτες τους.</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 5" required/>ΣΩΣΤΟ</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 5" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">6. Οι τεχνικές απαιτήσεις για αποτελεσματικές διαδικτυακές συνεδρίες επαγγελματικού προσανατολισμού περιορίζονται στην ύπαρξη ενός σύνδεση στο διαδίκτυο.</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 6" required/>ΣΩΣΤΟ</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 6" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">7. Τι είναι η προφορικότητα στη διαδικτυακή επικοινωνία ως καθοδήγηση συνομιλίας;</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 7" required/>Γράφετε και μιλάτε την ίδια στιγμή.</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 7" required/>Γράφετε σε ένα chat με τον τρόπο που γράφετε ένα επαγγελματικό e-mail</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 7" required/>Γράφετε με τον ίδιο τρόπο που μιλάτε χρησιμοποιώντας emojis για να εκφράσετε συναισθήματα</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 7" required/>Γράφετε με τον τρόπο που θέλετε</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">8. Δεν υπάρχει ανάγκη για την κατάρτιση ενός σχεδίου netiquette μεταξύ του επαγγελματία και του πελάτη.</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 8" required/>ΣΩΣΤΟ</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 8" required/>ΛΑΘΟΣ</p>
+            </div> 
+          </div>
+        </div>
+        </TNAsection>
+        <TNAsection id="Sec2">
+        <div class="sectionContainer">
+          <div class="sectionHead">
+          <h3>Θεματική ενότητα 2:Σχεδιασμός μικτών μορφών καθοδήγησης</h3>
+            <div class="skipButton" id="skipHide2">
+                <button type="button" onclick="return hideSection('secCont2','skipHide2')">Παράλειψη τμήματος</button>
+            </div>
+          </div>
+          <div class="sectionContent" id="secCont2">
+            <div class="questionContainer">
+              <h4 class="questionDesc">9. Ο μικτός επαγγελματικός προσανατολισμός περιλαμβάνει αποκλειστικά διαδικτυακές αλληλεπιδράσεις και αποκλείει τις παραδοσιακές επαφές μορφές προσώπου. </h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 9" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 9" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">10. Τι είναι απαραίτητο κατά το συνδυασμό παραδοσιακών και ψηφιακών πόρων για μικτή καθοδήγηση σταδιοδρομίας;</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 10" required/>Χρήση μόνο ψηφιακών αξιολογήσεων.</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 10" required/>Προσαρμογή παραδοσιακών και ψηφιακών μορφών ανάλογα με τις ανάγκες του πελάτη</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 10" required/>Αποκλειστική χρήση online καθοδήγηση</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 10" required/>Αποφυγή ψηφιακών πόρων εξ ολοκλήρου</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">11. Οι παραδοσιακές τεχνικές καθοδήγησης μπορούν συχνά να προσαρμοστούν ώστε να λειτουργούν σε μικτά περιβάλλοντα με την ενσωμάτωση νέων ψηφιακών στρατηγικών.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 11" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 11" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">12. Ποιο βήμα είναι κρίσιμο κατά τη ρύθμιση του τεχνικού εξοπλισμού για online συνεδρίες επαγγελματικού προσανατολισμού;</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 12" required/>Αγοράζοντας μόνο το πιο ακριβός εξοπλισμός</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 12" required/>Βασιζόμενοι αποκλειστικά σε μία σταθερή σύνδεση στο διαδίκτυο</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 12" required/>Σωστή ρύθμιση σε κάμερες, μικρόφωνα και φωτισμό</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 12" required/>Αγνοώντας τη διαμόρφωση του εξοπλισμού</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">13. Η κατανόηση των σταδίων της διαδικασίας επαγγελματικού προσανατολισμού είναι ζωτικής σημασίας για την αξιολόγηση των πελατών πρόοδο.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 13" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 13" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">14. Ποια δεξιότητα είναι ζωτικής σημασίας για να διαχειρίζεστε εικονικές συνεδρίες επαγγελματικού προσανατολισμού;</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 14" required/>Εφαρμογή μόνο των παραδοσιακών στρατηγικών καθοδήγησης κατ' ιδίαν</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 14" required/>Χρήση αυστηρών εργαλείων προγραμματισμού και προσαρμοσμένα σε εικονικά περιβάλλοντα</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 14" required/>Αποφυγή εργαλείων προγραμματισμού συνολικά</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 14" required/>Προτεραιότητα των ψηφιακών εργαλείων έναντι δέσμευση πελατών</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">15. Οι επαγγελματίες του επαγγελματικού προσανατολισμού θα πρέπει να μπορούν να προσαρμόζονται στις εξελισσόμενες τεχνολογίες και στις ανάγκες των πελατών τους.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 15" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 15" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">16. Πώς θα πρέπει να χρησιμοποιούνται οι μορφές επαγγελματικού προσανατολισμού για να διασφαλιστεί η αποτελεσματική συνδυασμένη καθοδήγηση;</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 16" required/>Χρησιμοποιήστε αυστηρά μια προτιμώμενη μορφή, παραδοσιακή ή ψηφιακή</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 16" required/>Αγνοήστε τα αποδειγμένες τεχνικές</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 16" required/>Προσαρμογή μορφών καθοδήγησης στις ανάγκες των πελατών</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 16" required/>Να βασίζεστε αποκλειστικά στην παραδοσιακή καθοδήγηση προσώπου</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">17. Η εξισορρόπηση των αρμοδιοτήτων επαγγελματικού προσανατολισμού, των ψηφιακών πόρων και των προσωπικών ζητημάτων απαιτεί αποτελεσματικό χρόνοδιαχείριση.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 17" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 17" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">19. Η αναζήτηση και η ενσωμάτωση νέων τεχνολογιών μπορεί να βοηθήσει στην βελτίωση της μικτής σταδιοδρομίας καθοδήγηση.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 19" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 19" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">20. Οι επαγγελματίες του επαγγελματικού προσανατολισμού θα πρέπει να υποστηρίζουν την ενδυνάμωση των πελατών στη λήψη τεκμηριωμένων αποφάσεων καριέρας.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 21" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 21" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">21. Ποια από τα ακόλουθα θα πρέπει να θέτουν σε προτεραιότητα οι επαγγελματίες του επαγγελματικού προσανατολισμού για συνεχή επαγγελματική ανάπτυξη;</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 22" required/>Αποφυγή τεχνολογικών εξελίξεων</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 22" required/>Χρησιμοποιόντας τις νέες τεχνικές και στρατηγικές καθοδήγησης</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 22" required/>Υιοθετώντας μόνο τους παραδοσιακούς μέθοδους καθοδήγησης</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 22" required/>Αγνοώντας τα στοιχεία… βασισμένων προσεγγίσεων</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">22. Η δια ζώσης επαγγελματική καθοδήγηση μπορεί να προσφέρει οφέλη που διαφέρουν από αυτά που παρέχουν οι ηλεκτρονικές μορφές</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 23" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 23" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">23. Ποια από τα ακόλουθα θα πρέπει να περιλαμβάνονται ως στάδια στη σταδιοδρομία διαδικασία καθοδήγησης;</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 24" required/>Προετοιμασία, αξιολόγηση, επανεξέταση και αξιολόγηση</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 24" required/>Άμεση αξιολόγηση και άμεσες συστάσεις πελατών</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 24" required/>Τελική ανασκόπηση του πελάτη μόνο για πρόοδο</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 24" required/>Εξάλειψη της αξιολόγησης για να αποφεύγεται η υπερφόρτωση του πελάτη</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">24. Οι τεχνικές αξιολόγησης θα πρέπει να αξιολογούν τον αντίκτυπο των συνδυασμένων μορφών επαγγελματικού προσανατολισμού στον πελάτη πρόοδο.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 25" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 25" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">25. Ο συνδυασμός διαφόρων μορφών καθοδήγησης μπορεί να βελτιστοποιήσει τη δέσμευση του πελάτη τόσο σε ατομικό όσο και σε ομαδικό επίπεδο. Συνεδρίων.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 27" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 27" required/>ΛΑΘΟΣ</p>
+            </div>
+          </div>
+        </div>
+        </TNAsection>
+        <TNAsection id="Sec3">
+        <div class="sectionContainer">
+          <div class="sectionHead">
+            <h3>Θεματική ενότητα 3: Ψηφιακή Πόροι και εργαλεία</h3>
+              <div class="skipButton" id="skipHide3">
+                  <button type="button" onclick="return hideSection('secCont3','skipHide3')">Παράλειψη τμήματος</button>
+              </div>
+            </div>
+          <div class="sectionContent" id="secCont3">
+            <div class="questionContainer">
+              <h4 class="questionDesc">26. Τα ψηφιακά εργαλεία και η διαδικτυακή συμβουλευτική δεν μπορούν να είναι διαδραστικά.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 29" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 29" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">27. Ποιο από τα ακόλουθα περιγράφει καλύτερα "απαξίωση";</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 30" required/>Η στρατηγική του σχεδιασμού προϊόντων με περιορισμένη διάρκεια ζωής για την ενθάρρυνση των επαναλαμβανώμενων αγορών</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 30" required/>Η κατάσταση του να είναι ξεπερασμένη ή να μην χρησιμοποιείται πλέον, συχνά λόγω των εξελίξεων στην τεχνολογία.</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 30" required/>Η φυσική διαδικασία της φθοράς που μειώνει τη λειτουργικότητα ενός προϊόντος με την πάροδο του χρόνου.</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 30" required/>Η πρακτική της ανακύκλωσης παλαιών προϊόντων για τη δημιουργία νέων.</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">28. Είναι χρήσιμο για τους συμβούλους επαγγελματικού προσανατολισμού να είναι σε θέση να αξιολογούν τις δικές τους ψηφιακές δεξιότητες και ανάγκες, εκτός από τις πελατών.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 31" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 31" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">29. Στη διαδικτυακή και μικτή συμβουλευτική, τα ψηφιακά εργαλεία μπορούν να χρησιμοποιηθούν μόνο για την σκοπούς αξιολόγησης.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 32" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 32" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">30. Η επίλυση ψηφιακών προβλημάτων δεν είναι χρήσιμη για τους συμβούλους επαγγελματικού προσανατολισμού, καθώς δεν είναι ειδικοί της πληροφορικής.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 33" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 33" required/>ΛΑΘΟΣ</p>
+            </div>
+          </div>
+        </div>
+        </TNAsection>
+        <TNAsection id="Sec4">
+        <div class="sectionContainer">
+          <div class="sectionHead">
+            <h3>Θεματική ενότητα 4: Ασφάλεια Κανονισμοί σε μικτή καθοδήγηση</h3>
+              <div class="skipButton" id="skipHide4">
+                  <button type="button" onclick="return hideSection('secCont4','skipHide4')">Παράλειψη τμήματος</button>
+              </div>
+            </div>
+          <div class="sectionContent" id="secCont4">
+            <div class="questionContainer">
+              <h4 class="questionDesc">31. Τι σημαίνει ο ορισμός GDPR;</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 34" required/>Γενικός Κανονισμός προστασίας δεδομένων</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 34" required/>Καθοδήγηση Απόρρητο δεδομένων Κανονισμός</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 34" required/>Παγκόσμιο ψηφιακό απόρρητο Απαιτήσεις</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">32. Οι κανονισμοί του ΓΚΠΔ δεν εφαρμόζονται στις ρυθμίσεις επαγγελματικού προσανατολισμού εάν τα δεδομένα προσωπικού χαρακτήρα συλλέγονται εκτός σύνδεσης.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 35" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 35" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">33. Ποιο είναι ένα από τα βασικά αρχές του ΓΚΠΔ; </h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 36" required/>Τα δεδομένα θα πρέπει να συλλέγονται μόνο για συγκεκριμένες, σαφείς, και νόμιμους σκοπούς</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 36" required/>Τα δεδομένα θα πρέπει να μοιράζονται ελεύθερα μεταξύ διαφορετικών οργανισμοί</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 36" required/>Τα δεδομένα θα πρέπει να αποθηκεύονται επ' αόριστον χωρίς να ανάγκη για τακτικές ενημερώσεις</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">34. Ο ΓΚΠΔ ορίζει ότι τα άτομα έχουν δικαίωμα πρόσβασης στα προσωπικά τους δεδομένα που κατέχουν οι οργανισμοί.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 37" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 37" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">35. Πώς πρέπει να χειρίζεστε τα προσωπικά δεδομένα που συλλέγονται από τους πελάτες;</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 38" required/>Μοιραστείτε το με οργανισμούς τρίτων για καλύτερη εργασία που ταιριάζουν</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 38" required/>Αποθηκεύστε το με ασφάλεια και λάβετε τη ρητή συγκατάθεση του πελάτη</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 38" required/>Χρησιμοποιήστε το για μάρκετινγκ σκοπούς χωρίς να ενημερώνεται ο πελάτης</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">36. Είναι αποδεκτό να μοιράζεστε τις προσωπικές πληροφορίες ενός πελάτη με άλλους επαγγελματίες</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 39" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 39" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">37. Όταν εργάζεστε με ανηλίκους και ευάλωτες ομάδες, ποια είναι το πρώτη βήμα στη διασφάλιση δεδομένων;</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 40" required/>Αναφέρετε τυχόν ανησυχίες στην αρμόδια υπηρεσία διασφάλισης</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 40" required/>Συζητήστε τις ανησυχίες με συναδέλφους και ζητήστε συμβουλές</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 40" required/>Αγνοήστε τις ανησυχίες, εκτός αν αναφέρονται ρητά από τον ανήλικο ή τον ευάλωτο ατομικό</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">38. Τα θέματα προστασίας αφορούν μόνο την προστασία των πελατών από σωματική βλάβη και δεν περιλαμβάνουν συναισθηματικές ή ψυχολογικές ευημερία.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 41" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 41" required/>ΛΑΘΟΣ</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">39. Ποιος είναι ένας αποτελεσματικός τρόπος προώθησης πρακτικών αυτοφροντίδας και μεθόδων μείωσης του στρες σε πελάτες;</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 42" required/>Παροχή πόρων και πληροφοριών σχετικά με την αυτοφροντίδα κατά τη διάρκεια συνεδριών καθοδήγησης</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 42" required/>Αποφύγετε να συζητάτε θέματα προσωπικής ευημερίας για να να διατηρείτε τον επαγγελματισμό σας</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 42" required/>Αγνοήστε τα σημάδια άγχους ή θέματα ψυχικής υγείας, καθώς δεν έχουν σχέση με επαγγελματικός προσανατολισμός</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">40. Είναι σημαντικό να δοθεί προτεραιότητα στις πρακτικές αυτοφροντίδας τόσο για τους επαγγελματίες συμβουλευτικής όσο και για τους πελάτες, ώστε να διασφαλιστεί μια υγιής και παραγωγική συμβουλευτική εμπειρία.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 43" required/>ΣΩΣΤΟ</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 43" required/>ΛΑΘΟΣ</p>
+            </div>
+          </div>
+        </div>
+        </TNAsection>
+      
+        <!-- Questionnaire end -->
+        <div class="btn-block">
+          <button type="submit" onsubmit="return calculateResults()">Εμφάνιση αποτελεσμάτων</button>        
+        </div>
+      </form>
+          <!-- container for narrative box and chart -->
+    <div class="results" id="results"> 
+        <div class="narrativeBox" id="narrativeBox">
+        </div>
+
+      <div class="radarBox"> 
+        <canvas id="radarChart">
+      </canvas>
+      </div>
+    </div>
+    <div class="resultsButtonSection" id="downloadButton">
+    </div>
+  </div>
+    </div>
+
+
+
+
+
+<script>
+    const ctx = document.getElementById('radarChart').getContext('2d');
+    let radarChart;
+    
+    const chartData = {
+        labels: [], // Labels for each data point
+        datasets: [
+            {
+                label: 'Scores',
+                data: [], // Data values
+                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Fill color
+                borderColor: 'rgba(75, 192, 192, 1)', // Line color
+                borderWidth: 2,
+            },
+        ],
+    };
+
+    // Function to hide a section
+    function hideSection(sectionId,buttonId) {
+      var sectionToHide = document.getElementById(sectionId);
+      var buttonToChange = document.getElementById(buttonId);
+      if (sectionToHide) {
+        // Hide the section
+        sectionToHide.classList.add('hidden');
+
+        // Remove 'required' attribute from input fields
+        var inputs = sectionToHide.querySelectorAll('input[type="radio"]');
+        inputs.forEach(function(input) {
+            input.removeAttribute('required');
+        });
+
+      }
+    buttonToChange.innerHTML = "<button type='button' onclick='return showSection("+'"'+sectionId+'"'+","+'"'+buttonId+'"'+")'>Προβολή τμήματος</button>";
+  }
+
+    // Function to show a section
+    function showSection(sectionId,buttonId) {
+      var sectionToShow = document.getElementById(sectionId);
+      var buttonToChange = document.getElementById(buttonId);
+      if (sectionToShow) {
+        // Hide the section
+        sectionToShow.classList.remove('hidden');
+
+        // Remove 'required' attribute from input fields
+        var inputs = sectionToShow.querySelectorAll('input[type="radio"]');
+        inputs.forEach(function(input) {
+            input.setAttribute('required','');
+        });
+      }
+    buttonToChange.innerHTML = "<button type='button' onclick='return hideSection("+'"'+sectionId+'"'+","+'"'+buttonId+'"'+")'>Παράλειψη τμήματος</button>";
+  }
+
+    // Function to update the radar chart
+    function updateRadarChart() {
+        if (radarChart) {
+            radarChart.destroy();
+        }
+        radarChart = new Chart(ctx, {
+            type: 'radar',
+            data: chartData,
+            options: {
+                aspectRatio: 1.5,
+                scales: {
+                    r: {
+                        pointLabels: {
+                            font: {
+                              size: 13,
+                            },
+                        },
+                        beginAtZero: true,
+                        max: 100,
+                    },
+                },
+            },
+        });
+    }
+
+    var form = document.getElementById("quizForm");
+    function handleForm(event) { event.preventDefault(); } 
+    form.addEventListener('submit', handleForm);
+    
+    function calculateResults() {
+
+        var score = 0;
+        var moduleNames = [
+          "Θεματική ενότητα 1: Online Επικοινωνία", 
+          "Θεματική ενότητα 2: Σχεδιασμός μικτών μορφών καθοδήγησης", 
+          "Θεματική ενότητα 3: Ψηφιακή Πόροι και εργαλεία",
+          "Θεματική ενότητα 4: Ασφάλεια Κανονισμοί σε μικτή καθοδήγηση"] //list of module names (for string use)
+        var sectionLabels = [
+        ["Online Επικοινωνία"],
+        ["Σχεδιασμός μικτών"," μορφών καθοδήγησης"],
+        ["Ψηφιακή Πόροι"," και εργαλεία"],
+        ["Ασφάλεια Κανονισμοί"," σε μικτή καθοδήγηση"],
+        ]
+        var sections = document.getElementsByTagName("TNAsection"); //creates a list of sections
+        var sectionAverages = []; //creates list for sections averages
+        var recommendationsList = new String(); //string for creating a html list of recommended modules for completion
+        var contentSections = document.getElementsByClassName("sectionContent");
+
+        var minimumSectionCount = sections.length;
+        for (var i = sections.length - 1; i >= 0; i--) {
+          if (contentSections[i].classList.contains('hidden')) {
+            minimumSectionCount --;
+          }
+        }
+
+        if (minimumSectionCount < 3) {
+          if ((3 - minimumSectionCount) == 1) {
+            var belowMinText = "Πρέπει να συμπληρώσετε τουλάχιστον 3 τμήματα. \n \nΠαρακαλούμε συμπληρώστε 1 ακόμη τμήμα.";
+          } else {
+            var belowMinText = "Πρέπει να συμπληρώσετε τουλάχιστον 3 τμήματα. \n \nPlease complete " + (3 - minimumSectionCount) + " more sections.";
+          }
+
+          window.alert(belowMinText);
+          return;
+        }
+
+        var downloadButton = document.getElementById("downloadButton");
+        downloadButton.innerHTML = "<button class='resultsButton' onclick='downloadChart()'>Λήψη διαγράμματος</button><button class='resultsButton' onclick='downloadFull()'>Λήψη πλήρων αποτελεσμάτων</button><button class='resultsButton' onclick='window.print()'>Εκτύπωση σελίδας</button>"
+
+        //loops through each section to calcualte results
+        for (var i = 0; i < sections.length; i++) { 
+            var sectionScore = 0;
+            var sectionAverage = 0;
+            var sectionLength = 0; 
+            var questions = sections[i].getElementsByTagName('input');
+            for (var j = 0; j < questions.length; j++) {
+                if (questions[j].checked) {
+                    score += parseFloat(questions[j].value);
+                    sectionScore += parseFloat(questions[j].value);
+                    sectionLength += 1;
+                } else {
+                    score += 0;
+                    sectionScore += 0;
+                }
+            }
+            sectionAverage = sectionScore/sectionLength; //calculate section 
+            sectionAverage = sectionAverage*100; //converts to percentage
+            sectionAverage = sectionAverage.toFixed(2); //rounds to 2 decimal figures
+            sectionAverages.push(sectionAverage);
+        }
+
+        for (var i = sections.length - 1; i >= 0; i--) {
+          if (contentSections[i].classList.contains('hidden')) {
+            sectionAverages.splice(i, 1);
+            sectionLabels.splice(i, 1);
+            moduleNames.splice(i, 1);
+          }
+        }
+        for (var i = moduleNames.length - 1; i >= 0; i--) {
+          if (sectionAverages[i] <= 50) { //check for score threshold and add section to recommendation list if too low
+          recommendationsList += '<li>'+ moduleNames[i] + '</li>';
+          }
+        }
+        chartData.datasets[0].data = sectionAverages;
+        chartData.labels = sectionLabels;
+        updateRadarChart();
+
+        var narrativeBox = document.getElementById("narrativeBox");
+        if (recommendationsList.length === 0){
+          narrativeBox.innerHTML = "<div class='resultsPara'><p>Μπράβο! Δεν υπάρχουν συγκεκριμένοι τομείς που φαίνονται να χρειάζονται προσοχή.<br><br>Για πιο λεπτομερή αποτελέσματα, δείτε τον παρακάτω πίνακα:</p></div>";
+
+        } else {
+          narrativeBox.innerHTML = "<div class='resultsPara'><p> Με βάση τα αποτελέσματά σας από το κουίζ, σας συνιστούμε να δώσετε ιδιαίτερη προσοχή στις εξής ενότητες:<br><ul>" + recommendationsList + "</ul><br><br>Για πιο λεπτομερή αποτελέσματα, δείτε τον παρακάτω πίνακα:</p></div>";
+        }
+
+
+        window.scrollBy({
+          left: 0, 
+          top: 600,
+          behavior:'smooth'
+        })
+      }
+
+      function downloadFull(){
+
+        html2canvas(document.getElementById('mainBox')).then(function (canvas) {
+          // Convert the image of the canvas to a blob
+          canvas.toBlob(function (blob) {
+            // Use FileSaver.js to download the blob as a PNG
+            saveAs(blob, "DISCO_SelfAssessement_Result_Full.png");
+          });
+        });
+      };
+
+      function downloadChart() {
+        // Captura el canvas y lo convierte en una imagen usando html2canvas / Capture the canvas and convert it to an image using html2canvas
+        html2canvas(document.getElementById('results')).then(function (canvas) {
+          // Convert the image of the canvas to a blob
+          canvas.toBlob(function (blob) {
+            // Use FileSaver.js to download the blob as a PNG
+            saveAs(blob, "DISCO_SelfAssessement_Result_Chart.png");
+          });
+      });
+
+
+    }
+</script>
+  </body>
+</html>

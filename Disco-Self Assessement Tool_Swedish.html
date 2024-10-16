@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DISCOs verktyg för självutvärdering</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="assessementStyles.css">
+    <script>
+      function sendHeightToParent() {
+          var height = document.documentElement.scrollHeight;
+          window.parent.postMessage({ type: 'resizeIframe', height: height }, '*');
+      }
+
+      window.onload = sendHeightToParent;
+      window.onresize = sendHeightToParent;
+    </script>
+  </head>
+  <body>
+    <div class="mainBox" id="mainBox">
+      <h1>DISCOs verktyg för självutvärdering</h1>
+      <br>
+
+      <!-- Container for introduction and instructions -->
+      <!--<div class="introBox"> 
+       
+        <h3>Tool Introduction and Instructions</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>-->
+
+      <form id="quizForm" onsubmit="return calculateResults()">
+
+        <!-- Questionnaire start -->
+        <TNAsection id="Sec1" >
+        <div class="sectionContainer">
+          <div class="sectionHead">
+            <h3>Tematisk modul 1: Kommunikation online</h3>
+            <div class="skipButton" id="skipHide1">
+                <button type="button" onclick="return hideSection('secCont1','skipHide1')">Hoppa över avsnitt</button>
+            </div>
+          </div>
+          <div class="sectionContent" id="secCont1">
+            <div class="questionContainer">
+              <h4 class="questionDesc">1. Hur mycket en karriärvägledare förbereder sig inför en vägledningssession online påverkar inte hur framgångsrik sessionen blir.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 1" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 1" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">2. Det finns olika faser i onlinevägledning. Vilken av följande faser kommer först?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 2" required/>Förändringsfas</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 2" required/>Orienteringsfas</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 2" required/>Slutlig avslutningsfas</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 2" required/>Förtydligande fas</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">3. Att bygga upp en förtroendefull relation med kunderna är inte viktigt för ett vägledningssamtal eftersom det viktigaste är att förmedla information.</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 3" required/>SANT</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 3" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">4. Vad skulle du som karriärvägledare kunna göra för att äventyra en förtroendefull relation mellan dig och klienten?</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 4" required/>Genom att upprepa innehållet hos din kund med dina egna ord</p>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 4" required/>Genom att lyssna uppmärksamt</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 4" required/>Genom att kritisera klienten för beslut som han eller hon har fattat i det förflutna</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">5. Personer som arbetar med karriärvägledning bör anpassa en allmän strategi för alla sina klienter.</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 5" required/>SANT</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 5" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">6. Tekniska krav för effektiva karriärvägledningssessioner online är begränsade till att ha en internetuppkoppling.</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 6" required/>SANT</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 6" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">7. Vad är muntlighet i online-kommunikation, t.ex. chattvägledning?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 7" required/>Du skriver och pratar på samma gång.</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 7" required/>Du skriver i en chatt på samma sätt som du skriver ett professionellt e-postmeddelande</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 7" required/>Du skriver på samma sätt som du talar och använder emojis för att uttrycka känslor</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 7" required/>Du skriver som du vill</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">8. Det finns inget behov av att upprätta en etikettplan mellan behandlaren och kunden.</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 8" required/>SANT</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 8" required/>FALSK</p>
+            </div> 
+          </div>
+        </div>
+        </TNAsection>
+        <TNAsection id="Sec2">
+        <div class="sectionContainer">
+          <div class="sectionHead">
+          <h3>Tematisk modul 2: Utformning av blandade vägledningsformat</h3>
+            <div class="skipButton" id="skipHide2">
+                <button type="button" onclick="return hideSection('secCont2','skipHide2')">Hoppa över avsnitt</button>
+            </div>
+          </div>
+          <div class="sectionContent" id="secCont2">
+            <div class="questionContainer">
+              <h4 class="questionDesc">9. Blandad karriärvägledning omfattar endast interaktioner online och utesluter traditionella format ansikte mot ansikte. </h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 9" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 9" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">10. Vad är viktigt när man kombinerar traditionella och digitala resurser för blandad karriärvägledning?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 10" required/>Att endast använda digitala bedömningar</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 10" required/>Att skräddarsy traditionella och digitala format efter kundens behov</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 10" required/>Att uteslutande använda onlinevägledning</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 10" required/>Att helt undvika digitala resurser</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">11. Traditionella vägledningstekniker kan ofta anpassas för att fungera i blandade miljöer genom att integrera nya digitala strategier.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 11" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 11" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">12. Vilket steg är viktigt när man installerar teknisk utrustning för karriärvägledningssessioner online?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 12" required/>Att bara köpa den dyraste utrustningen</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 12" required/>Att enbart förlita sig på en stabil internetanslutning</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 12" required/>Att korrekt ställa in kameror, mikrofoner och belysning</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 12" required/>Att strunta i utrustningens konfiguration</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">13. Att förstå stegen i karriärvägledningsprocessen är avgörande för att utvärdera klientens framsteg.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 13" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 13" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">14. Vilken färdighet är avgörande för att hantera virtuella karriärvägledningssessioner?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 14" required/>Att endast tillämpa traditionella vägledningsstrategier för personliga möten</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 14" required/>Att använda strikta schemaläggningsverktyg och skräddarsydda virtuella miljöer</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 14" required/>Att helt undvika schemaläggningsverktyg</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 14" required/>Att prioritera digitala verktyg framför klientengagemang</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">15. Personer som arbetar med karriärvägledning bör vara anpassningsbara till ny teknik och nya kundbehov.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 15" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 15" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">16. Hur bör format för karriärvägledning användas för att säkerställa effektiv blandad vägledning?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 16" required/>Strikt använda ett föredraget format, traditionellt eller digitalt</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 16" required/>Ignorera evidensbaserade tekniker</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 16" required/>Anpassa vägledningsformat till klientens behov</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 16" required/>Förlita sig enbart på traditionell personlig vägledning</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">17. Att balansera karriärvägledningsansvar, digitala resurser och personliga angelägenheter kräver effektiv tidshantering.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 17" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 17" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">19. Att söka efter och integrera ny teknik kan bidra till att lyfta blandad karriärvägledning.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 19" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 19" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">20. Yrkesverksamma inom karriärvägledning bör förespråka att ge klienter möjlighet att fatta välgrundade karriärbeslut.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 21" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 21" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">21. Vilket av följande bör yrkesverksamma inom karriärvägledning prioritera för kontinuerlig professionell utveckling?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 22" required/>Undvika tekniska framsteg</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 22" required/>Hålla sig uppdaterad med nya vägledningstekniker och strategier</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 22" required/>Anta endast traditionella vägledningsmetodear</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 22" required/>Bortse från evidensbaserade metoder</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">22. Karriärvägledning ansikte mot ansikte kan erbjuda fördelar som skiljer sig från dem som tillhandahålls av onlineformat</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 23" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 23" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">23. Vilka av följande bör ingå som steg i karriärvägledningsprocessen?</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 24" required/>Förberedelse, bedömning, granskning och utvärdering</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 24" required/>Omedelbar bedömning och omedelbara rekommendationer till klienten</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 24" required/>Endast slutlig granskning av klientens framsteg</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 24" required/>Eliminera utvärdering för att undvika att klienten blir överväldigad</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">24. Utvärderingstekniker bör bedöma hur blandade format för karriärvägledning påverkar klientens framsteg.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 25" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 25" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">25. Att blanda olika vägledningsformat kan optimera klientens engagemang i både individuella sessioner och gruppsessioner.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 27" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 27" required/>FALSK</p>
+            </div>
+          </div>
+        </div>
+        </TNAsection>
+        <TNAsection id="Sec3">
+        <div class="sectionContainer">
+          <div class="sectionHead">
+            <h3>Tematisk modul 3: Digitala resurser och verktyg</h3>
+              <div class="skipButton" id="skipHide3">
+                  <button type="button" onclick="return hideSection('secCont3','skipHide3')">Hoppa över avsnitt</button>
+              </div>
+            </div>
+          <div class="sectionContent" id="secCont3">
+            <div class="questionContainer">
+              <h4 class="questionDesc">26. Digitala verktyg och onlinerådgivning kan inte vara interaktiva.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 29" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 29" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">27. Vilket av följande beskriver bäst ”obsolescens”?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 30" required/>Strategin att utforma produkter så att de har en begränsad livslängd för att uppmuntra till upprepade köp.</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 30" required/>Tillståndet att vara föråldrad eller inte längre användas, ofta på grund av tekniska framsteg.</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 30" required/>Den naturliga processen av slitage som minskar en produkts funktionalitet över tid.</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 30" required/>Återvinning av gamla produkter för att skapa nya.</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">28. Det är användbart för studie- och yrkesvägledare att kunna bedöma sina egna digitala färdigheter och behov, utöver sina klienters.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 31" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 31" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">29. I online- och blandad vägledning kan digitala verktyg endast användas för utvärderingsändamål.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 32" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 32" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">30. Felsökning av digitala problem är inte användbart för vägledare, eftersom de inte är IT-specialister.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 33" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 33" required/>FALSK</p>
+            </div>
+          </div>
+        </div>
+        </TNAsection>
+        <TNAsection id="Sec4">
+        <div class="sectionContainer">
+          <div class="sectionHead">
+            <h3>Tematisk modul 4: Säkerhet och regler i blandad vägledning</h3>
+              <div class="skipButton" id="skipHide4">
+                  <button type="button" onclick="return hideSection('secCont4','skipHide4')">Hoppa över avsnitt</button>
+              </div>
+            </div>
+          <div class="sectionContent" id="secCont4">
+            <div class="questionContainer">
+              <h4 class="questionDesc">31. Vad står GDPR för?</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 34" required/>Allmän dataskyddsförordning</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 34" required/>Vägledning Dataskyddsförordning</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 34" required/>Globala krav på digital integritet</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">32. GDPR-förordningarna gäller inte för karriärvägledning om personuppgifter samlas in offline.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 35" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 35" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">33. Vilken är en av de viktigaste principerna i GDPR? </h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 36" required/>Uppgifter ska endast samlas in för särskilda, uttryckligt angivna och berättigade ändamål</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 36" required/>Uppgifter ska kunna delas fritt mellan olika organisationer</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 36" required/>Uppgifter ska kunna lagras på obestämd tid utan behov av regelbundna uppdateringar</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">34. GDPR föreskriver att individer har rätt att få tillgång till sina personuppgifter som innehas av organisationer.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 37" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 37" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">35. Hur ska du hantera personuppgifter som samlas in från kunder?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 38" required/>Dela dem med tredjepartsorganisationer för bättre jobbmatchning</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 38" required/>Förvara dem säkert och inhämta uttryckligt samtycke från kunden</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 38" required/>Använda dem för marknadsföringsändamål utan att informera kunden</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">36. Det är acceptabelt att dela en klients personuppgifter med andra yrkesverksamma</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 39" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 39" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">37. När du arbetar med minderåriga och utsatta grupper, vad är det första steget i att skydda?</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 40" required/>Rapportera eventuella farhågor till lämpliga myndigheter</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 40" required/>Diskutera farhågorna med kollegor och sök råd</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 40" required/>Ignorera farhågorna om de inte uttryckligen nämns av den minderåriga eller utsatta personen</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">38. Skyddsfrågor innebär endast att skydda klienter från fysisk skada och omfattar inte känslomässigt eller psykologiskt välbefinnande.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 41" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 41" required/>FALSK</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">39. Vad är ett effektivt sätt att främja egenvårdsrutiner och stressreducerande metoder för klienter?</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 42" required/>Tillhandahålla resurser och information om egenvård under vägledningssessionerna</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 42" required/>Undvika att diskutera ämnen som rör personligt välbefinnande för att upprätthålla professionalism</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 42" required/>Ignorera tecken på stress eller psykisk ohälsa eftersom de inte är relevanta för karriärvägledning</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">40. Det är viktigt att prioritera egenvård för både vägledare och klienter för att säkerställa en hälsosam och produktiv vägledningsupplevelse.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 43" required/>SANT</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 43" required/>FALSK</p>
+            </div>
+          </div>
+        </div>
+        </TNAsection>
+      
+        <!-- Questionnaire end -->
+        <div class="btn-block">
+          <button type="submit" onsubmit="return calculateResults()">Visa resultat</button>        
+        </div>
+      </form>
+          <!-- container for narrative box and chart -->
+    <div class="results" id="results"> 
+        <div class="narrativeBox" id="narrativeBox">
+        </div>
+
+      <div class="radarBox"> 
+        <canvas id="radarChart">
+      </canvas>
+      </div>
+    </div>
+    <div class="resultsButtonSection" id="downloadButton">
+    </div>
+  </div>
+    </div>
+
+
+
+
+
+<script>
+    const ctx = document.getElementById('radarChart').getContext('2d');
+    let radarChart;
+    
+    const chartData = {
+        labels: [], // Labels for each data point
+        datasets: [
+            {
+                label: 'Scores',
+                data: [], // Data values
+                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Fill color
+                borderColor: 'rgba(75, 192, 192, 1)', // Line color
+                borderWidth: 2,
+            },
+        ],
+    };
+
+    // Function to hide a section
+    function hideSection(sectionId,buttonId) {
+      var sectionToHide = document.getElementById(sectionId);
+      var buttonToChange = document.getElementById(buttonId);
+      if (sectionToHide) {
+        // Hide the section
+        sectionToHide.classList.add('hidden');
+
+        // Remove 'required' attribute from input fields
+        var inputs = sectionToHide.querySelectorAll('input[type="radio"]');
+        inputs.forEach(function(input) {
+            input.removeAttribute('required');
+        });
+
+      }
+    buttonToChange.innerHTML = "<button type='button' onclick='return showSection("+'"'+sectionId+'"'+","+'"'+buttonId+'"'+")'>Visa avsnitt</button>";
+  }
+
+    // Function to show a section
+    function showSection(sectionId,buttonId) {
+      var sectionToShow = document.getElementById(sectionId);
+      var buttonToChange = document.getElementById(buttonId);
+      if (sectionToShow) {
+        // Hide the section
+        sectionToShow.classList.remove('hidden');
+
+        // Remove 'required' attribute from input fields
+        var inputs = sectionToShow.querySelectorAll('input[type="radio"]');
+        inputs.forEach(function(input) {
+            input.setAttribute('required','');
+        });
+      }
+    buttonToChange.innerHTML = "<button type='button' onclick='return hideSection("+'"'+sectionId+'"'+","+'"'+buttonId+'"'+")'>Hoppa över avsnitt</button>";
+  }
+
+    // Function to update the radar chart
+    function updateRadarChart() {
+        if (radarChart) {
+            radarChart.destroy();
+        }
+        radarChart = new Chart(ctx, {
+            type: 'radar',
+            data: chartData,
+            options: {
+                aspectRatio: 1.5,
+                scales: {
+                    r: {
+                        pointLabels: {
+                            font: {
+                              size: 13,
+                            },
+                        },
+                        beginAtZero: true,
+                        max: 100,
+                    },
+                },
+            },
+        });
+    }
+
+    var form = document.getElementById("quizForm");
+    function handleForm(event) { event.preventDefault(); } 
+    form.addEventListener('submit', handleForm);
+    
+    function calculateResults() {
+
+        var score = 0;
+        var moduleNames = [
+          "Tematisk modul 1: Kommunikation online", 
+          "Tematisk modul 2: Utformning av blandade vägledningsformat", 
+          "Tematisk modul 3: Digitala resurser och verktyg",
+          "Tematisk modul 4: Säkerhet och regler i blandad vägledning"] //list of module names (for string use)
+        var sectionLabels = [
+        ["Kommunikation online"],
+        ["Utformning av blandade"," vägledningsformat"],
+        ["Digitala resurser"," och verktyg"],
+        ["Säkerhet och regler"," i blandad vägledning"],
+        ]
+        var sections = document.getElementsByTagName("TNAsection"); //creates a list of sections
+        var sectionAverages = []; //creates list for sections averages
+        var recommendationsList = new String(); //string for creating a html list of recommended modules for completion
+        var contentSections = document.getElementsByClassName("sectionContent");
+
+        var minimumSectionCount = sections.length;
+        for (var i = sections.length - 1; i >= 0; i--) {
+          if (contentSections[i].classList.contains('hidden')) {
+            minimumSectionCount --;
+          }
+        }
+
+        if (minimumSectionCount < 3) {
+          if ((3 - minimumSectionCount) == 1) {
+            var belowMinText = "Du måste slutföra minst 3 avsnitt. \n \nVänligen fyll i ytterligare 1 avsnitt.";
+          } else {
+            var belowMinText = "Du måste slutföra minst 3 avsnitt. \n \nPlease complete " + (3 - minimumSectionCount) + " more sections.";
+          }
+
+          window.alert(belowMinText);
+          return;
+        }
+
+        var downloadButton = document.getElementById("downloadButton");
+        downloadButton.innerHTML = "<button class='resultsButton' onclick='downloadChart()'>Ladda ner diagram</button><button class='resultsButton' onclick='downloadFull()'>Ladda ner fullständiga resultat</button><button class='resultsButton' onclick='window.print()'>Skriv ut sida</button>"
+
+        //loops through each section to calcualte results
+        for (var i = 0; i < sections.length; i++) { 
+            var sectionScore = 0;
+            var sectionAverage = 0;
+            var sectionLength = 0; 
+            var questions = sections[i].getElementsByTagName('input');
+            for (var j = 0; j < questions.length; j++) {
+                if (questions[j].checked) {
+                    score += parseFloat(questions[j].value);
+                    sectionScore += parseFloat(questions[j].value);
+                    sectionLength += 1;
+                } else {
+                    score += 0;
+                    sectionScore += 0;
+                }
+            }
+            sectionAverage = sectionScore/sectionLength; //calculate section 
+            sectionAverage = sectionAverage*100; //converts to percentage
+            sectionAverage = sectionAverage.toFixed(2); //rounds to 2 decimal figures
+            sectionAverages.push(sectionAverage);
+        }
+
+        for (var i = sections.length - 1; i >= 0; i--) {
+          if (contentSections[i].classList.contains('hidden')) {
+            sectionAverages.splice(i, 1);
+            sectionLabels.splice(i, 1);
+            moduleNames.splice(i, 1);
+          }
+        }
+        for (var i = moduleNames.length - 1; i >= 0; i--) {
+          if (sectionAverages[i] <= 50) { //check for score threshold and add section to recommendation list if too low
+          recommendationsList += '<li>'+ moduleNames[i] + '</li>';
+          }
+        }
+        chartData.datasets[0].data = sectionAverages;
+        chartData.labels = sectionLabels;
+        updateRadarChart();
+
+        var narrativeBox = document.getElementById("narrativeBox");
+        if (recommendationsList.length === 0){
+          narrativeBox.innerHTML = "<div class='resultsPara'><p>Bra gjort! Det finns inga specifika områden som verkar behöva uppmärksammas.<br><br>För mer detaljerade resultat, se diagrammet nedan:</p></div>";
+
+        } else {
+          narrativeBox.innerHTML = "<div class='resultsPara'><p> Baserat på dina resultat från frågesporten rekommenderar vi att du ägnar särskild uppmärksamhet åt följande moduler:<br><ul>" + recommendationsList + "</ul><br><br>För mer detaljerade resultat, se diagrammet nedan:</p></div>";
+        }
+
+
+        window.scrollBy({
+          left: 0, 
+          top: 600,
+          behavior:'smooth'
+        })
+      }
+
+      function downloadFull(){
+
+        html2canvas(document.getElementById('mainBox')).then(function (canvas) {
+          // Convert the image of the canvas to a blob
+          canvas.toBlob(function (blob) {
+            // Use FileSaver.js to download the blob as a PNG
+            saveAs(blob, "DISCO_SelfAssessement_Result_Full.png");
+          });
+        });
+      };
+
+      function downloadChart() {
+        // Captura el canvas y lo convierte en una imagen usando html2canvas / Capture the canvas and convert it to an image using html2canvas
+        html2canvas(document.getElementById('results')).then(function (canvas) {
+          // Convert the image of the canvas to a blob
+          canvas.toBlob(function (blob) {
+            // Use FileSaver.js to download the blob as a PNG
+            saveAs(blob, "DISCO_SelfAssessement_Result_Chart.png");
+          });
+      });
+
+
+    }
+</script>
+  </body>
+</html>

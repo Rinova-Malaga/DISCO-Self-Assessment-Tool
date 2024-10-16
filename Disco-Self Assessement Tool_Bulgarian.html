@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Инструмент за самооценка на DISCO</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="assessementStyles.css">
+    <script>
+      function sendHeightToParent() {
+          var height = document.documentElement.scrollHeight;
+          window.parent.postMessage({ type: 'resizeIframe', height: height }, '*');
+      }
+
+      window.onload = sendHeightToParent;
+      window.onresize = sendHeightToParent;
+    </script>
+  </head>
+  <body>
+    <div class="mainBox" id="mainBox">
+      <h1>Инструмент за самооценка на DISCO</h1>
+      <br>
+
+      <!-- Container for introduction and instructions -->
+      <!--<div class="introBox"> 
+       
+        <h3>Tool Introduction and Instructions</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>-->
+
+      <form id="quizForm" onsubmit="return calculateResults()">
+
+        <!-- Questionnaire start -->
+        <TNAsection id="Sec1" >
+        <div class="sectionContainer">
+          <div class="sectionHead">
+            <h3>Тематичен модул 1: Онлайн комуникация</h3>
+            <div class="skipButton" id="skipHide1">
+                <button type="button" onclick="return hideSection('secCont1','skipHide1')">Пропуснете раздела</button>
+            </div>
+          </div>
+          <div class="sectionContent" id="secCont1">
+            <div class="questionContainer">
+              <h4 class="questionDesc">1. Това, колко добре се подготвя кариерният консултант за сесия за онлайн ориентиране, не влияе върху успеха на сесията.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 1" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 1" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">2. При онлайн ориентирането има различни фази. Коя от следните фази е първа?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 2" required/>Фаза на промяна</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 2" required/>Фаза на ориентиране</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 2" required/>Фаза на окончателно приключване</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 2" required/>Фаза на изясняване</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">3. Изграждането на доверителни отношения с клиентите не е важно за сесията по ориентиране, тъй като най-важно е предаването на информация.</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 3" required/>ВЯРНО</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 3" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">4. Какво бихте могли да направите като кариерен консултант, за да застрашите доверителната връзка между вас и клиента?</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 4" required/>Като повтаряте съдържанието на думите на клиента със свои думи</p>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 4" required/>Като слушате внимателно</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 4" required/>Като критикувате клиента за решенията, които е взел в миналото</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">5. Специалистите по кариерно ориентиране трябва да прилагат общ подход към всички свои клиенти.</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 5" required/>ВЯРНО</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 5" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">6. Техническите изисквания за провеждане на ефективни онлайн сесии по кариерно ориентиране се ограничават до наличието на интернет връзка.</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 6" required/>ВЯРНО</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 6" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">7. Какво представлява устната писменост в онлайн комуникацията, например в чата за кариерно ориентиране?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 7" required/>Вие пишете и говорите едновременно.</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 7" required/>Пишете в чата по начина, по който пишете професионално електронно писмо</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 7" required/>Пишете по същия начин, по който говорите, като използвате емотикони, за да изразите чувства</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 7" required/>Пишете по начина, по който искате</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">8. Не е необходимо да се създава план за нетикет между практикуващия и клиента.</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 8" required/>ВЯРНО</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 8" required/>ГРЕШНО</p>
+            </div> 
+          </div>
+        </div>
+        </TNAsection>
+        <TNAsection id="Sec2">
+        <div class="sectionContainer">
+          <div class="sectionHead">
+          <h3>Тематичен модул 2: Проектиране на смесени формати за напътствия</h3>
+            <div class="skipButton" id="skipHide2">
+                <button type="button" onclick="return hideSection('secCont2','skipHide2')">Пропуснете раздела</button>
+            </div>
+          </div>
+          <div class="sectionContent" id="secCont2">
+            <div class="questionContainer">
+              <h4 class="questionDesc">9. Смесеното кариерно ориентиране включва единствено онлайн взаимодействия и изключва традиционните формати „лице в лице“. </h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 9" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 9" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">10. Какво е от съществено значение при комбинирането на традиционни и цифрови ресурси за смесено кариерно ориентиране?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 10" required/>Използване само на цифрови оценки</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 10" required/>Приспособяване на традиционните и цифровите формати към нуждите на клиента</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 10" required/>Изключително използване на онлайн ориентиране</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 10" required/>Избягване изцяло на цифровите ресурси</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">11. Традиционните техники за ориентиране често могат да бъдат адаптирани за работа в смесена среда чрез интегриране на нови цифрови стратегии.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 11" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 11" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">12. Коя стъпка е от решаващо значение при настройването на техническото оборудване за онлайн сесиите по кариерно ориентиране?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 12" required/>Закупуване само на най-скъпото оборудване</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 12" required/>Разчитане единствено на стабилна интернет връзка</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 12" required/>Правилно настройване на камерите, микрофоните и осветлението</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 12" required/>Пренебрегване на конфигурацията на оборудването</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">13. Разбирането на етапите на процеса на кариерно ориентиране е от решаващо значение за оценката на напредъка на клиента.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 13" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 13" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">14. Кое умение е от решаващо значение за воденето на онлайн сесии за кариерно ориентиране?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 14" required/>Прилагането само на традиционните стратегии за ориентиране при личен контакт</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 14" required/>Използване на инструменти за стриктно планиране и адаптирана виртуална среда</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 14" required/>Избягване на инструментите за планиране изобщо</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 14" required/>Даване на приоритет на цифровите инструменти пред ангажираността на клиента</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">15. Специалистите по кариерно ориентиране трябва да са адаптивни към развиващите се технологии и потребности на клиентите.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 15" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 15" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">16. Как трябва да се използват форматите за кариерно ориентиране, за да се осигури ефективно смесено ориентиране?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 16" required/>Да се използва стриктно един предпочитан формат - традиционен или цифров</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 16" required/>Игнорирайте техниките, основани на доказателства</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 16" required/>Адаптирайте форматите за професионално ориентиране към нуждите на клиента</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 16" required/>Разчитат единствено на традиционното лично ориентиране</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">17. Балансирането на отговорностите за кариерно ориентиране, цифровите ресурси и личните въпроси изисква ефективно управление на времето.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 17" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 17" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">19. Търсенето и интегрирането на нови технологии може да спомогне за издигане на нивото на смесеното кариерно ориентиране.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 19" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 19" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">20. Специалистите по кариерно ориентиране трябва да се застъпват за овластяване на клиентите при вземането на информирани решения за кариерата.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 21" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 21" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">21. Кое от изброените неща трябва да бъде приоритетно за специалистите по кариерно ориентиране при непрекъснатото им професионално развитие?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 22" required/>Избягване на технологичния напредък</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 22" required/>Да бъдат в крак с новите техники и стратегии за професионално ориентиране</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 22" required/>Приемане само на традиционни методи за ориентиране</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 22" required/>Пренебрегване на подходи, основани на доказателства</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">22. Кариерното ориентиране лице в лице може да предложи ползи, които се различават от тези, предоставяни от онлайн форматите</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 23" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 23" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">23. Кои от изброените трябва да бъдат включени като етапи в процеса на кариерно ориентиране?</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 24" required/>Подготовка, анализ, преглед и оценка</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 24" required/>Незабавна оценка и незабавни препоръки към клиента</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 24" required/>Само окончателен анализ на напредъка на клиента</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 24" required/>Елиминиране на оценката, за да се избегне претоварването на клиента</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">24. Техниките за оценка трябва да оценяват как смесените формати за кариерно ориентиране влияят върху напредъка на клиента.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 25" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 25" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">25. Смесването на различни формати за кариерно ориентиране може да оптимизира ангажираността на клиента както в индивидуалните, така и в груповите сесии.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 27" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 27" required/>ГРЕШНО</p>
+            </div>
+          </div>
+        </div>
+        </TNAsection>
+        <TNAsection id="Sec3">
+        <div class="sectionContainer">
+          <div class="sectionHead">
+            <h3>Тематичен модул 3: Цифрови ресурси и инструменти</h3>
+              <div class="skipButton" id="skipHide3">
+                  <button type="button" onclick="return hideSection('secCont3','skipHide3')">Пропуснете раздела</button>
+              </div>
+            </div>
+          <div class="sectionContent" id="secCont3">
+            <div class="questionContainer">
+              <h4 class="questionDesc">26. Цифровите инструменти и онлайн консултирането не могат да бъдат интерактивни.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 29" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 29" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">27. Кое от следните неща описва най-добре „ отживяването“?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 30" required/>Стратегията за проектиране на продукти, които да имат ограничен срок на годност, за да се насърчат повторните покупки.</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 30" required/>Състоянието на остаряване или на това, че вече не се използва, често поради напредъка на технологиите.</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 30" required/>Естественият процес на амортизация, който намалява функционалността на даден продукт с течение на времето.</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 30" required/>Практиката на рециклиране на стари продукти за създаване на нови.</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">28. Полезно е консултантите по ориентиране да могат да оценяват собствените си цифрови умения и нужди, в допълнение към тези на клиентите си.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 31" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 31" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">29. При онлайн и смесеното консултиране цифровите инструменти могат да се използват само за целите на оценката.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 32" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 32" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">30. Отстраняването на проблеми с цифровите технологии не е полезно за консултантите, тъй като те не са специалисти по ИТ.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 33" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 33" required/>ГРЕШНО</p>
+            </div>
+          </div>
+        </div>
+        </TNAsection>
+        <TNAsection id="Sec4">
+        <div class="sectionContainer">
+          <div class="sectionHead">
+            <h3>Тематичен модул 4: Безопасност и правила в смесеното ориентиране</h3>
+              <div class="skipButton" id="skipHide4">
+                  <button type="button" onclick="return hideSection('secCont4','skipHide4')">Пропуснете раздела</button>
+              </div>
+            </div>
+          <div class="sectionContent" id="secCont4">
+            <div class="questionContainer">
+              <h4 class="questionDesc">31. Какво означава GDPR?</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 34" required/>Общ регламент за защита на данните</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 34" required/>Регламент за защита на личните данни в областта на ориентирането</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 34" required/>Глобални изисквания за защита на личните данни в цифрова среда</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">32. Регламентите на GDPR не се прилагат към настройките за кариерно ориентиране, ако личните данни се събират офлайн.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 35" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 35" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">33. Кой е един от основните принципи на GDPR? </h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 36" required/>Данните следва да се събират само за конкретни, изрично посочени и легитимни цели</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 36" required/>Данните следва да се споделят свободно между различни организации</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 36" required/>Данните следва да се съхраняват за неопределено време, без да е необходимо да се актуализират редовно</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">34. GDPR задължава физическите лица да имат право на достъп до своите лични данни, съхранявани от организациите.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 37" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 37" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">35. Как трябва да обработвате личните данни, събрани от клиенти?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 38" required/>Да ги споделяте с организации на трети страни за по-добро подбиране на кандидати за работа</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 38" required/>Съхранявайте ги по сигурен начин и получете изрично съгласие от клиента</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 38" required/>Да ги използвате за маркетингови цели, без да информирате клиента</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">36. Приемливо е да споделяте личната информация на клиента с други професионалисти</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 39" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 39" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">37. Когато работите с непълнолетни и уязвими групи, коя е първата стъпка в опазването на сигурността?</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 40" required/>Съобщете за всякакви опасения на съответните органи за защита</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 40" required/>Обсъдете опасенията с колеги и потърсете съвет</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 40" required/>Игнорирайте опасенията, освен ако непълнолетното или уязвимото лице не ги посочи изрично</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">38. Въпросите на предпазването включват само защита на клиентите от физическо увреждане и не включват емоционално или психологическо благополучие.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 41" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 41" required/>ГРЕШНО</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">39. Кой е ефективният начин за популяризиране на практиките за самообслужване и методите за намаляване на стреса сред клиентите?</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 42" required/>Предоставяне на ресурси и информация за самопомощ по време на сесиите за консултиране</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 42" required/>Избягвайте да обсъждате теми, свързани с личното благополучие, за да запазите професионализма</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 42" required/>Игнорирайте признаците на стрес или проблеми с психичното здраве, тъй като те не са от значение за професионалното ориентиране</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">40. Важно е да се приоритизират практиките за самопомощ както за специалистите по ориентиране, така и за клиентите, за да се осигури здравословен и продуктивен опит в ориентирането.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 43" required/>ВЯРНО</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 43" required/>ГРЕШНО</p>
+            </div>
+          </div>
+        </div>
+        </TNAsection>
+      
+        <!-- Questionnaire end -->
+        <div class="btn-block">
+          <button type="submit" onsubmit="return calculateResults()">Покажи резултатите</button>        
+        </div>
+      </form>
+          <!-- container for narrative box and chart -->
+    <div class="results" id="results"> 
+        <div class="narrativeBox" id="narrativeBox">
+        </div>
+
+      <div class="radarBox"> 
+        <canvas id="radarChart">
+      </canvas>
+      </div>
+    </div>
+    <div class="resultsButtonSection" id="downloadButton">
+    </div>
+  </div>
+    </div>
+
+
+
+
+
+<script>
+    const ctx = document.getElementById('radarChart').getContext('2d');
+    let radarChart;
+    
+    const chartData = {
+        labels: [], // Labels for each data point
+        datasets: [
+            {
+                label: 'Scores',
+                data: [], // Data values
+                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Fill color
+                borderColor: 'rgba(75, 192, 192, 1)', // Line color
+                borderWidth: 2,
+            },
+        ],
+    };
+
+    // Function to hide a section
+    function hideSection(sectionId,buttonId) {
+      var sectionToHide = document.getElementById(sectionId);
+      var buttonToChange = document.getElementById(buttonId);
+      if (sectionToHide) {
+        // Hide the section
+        sectionToHide.classList.add('hidden');
+
+        // Remove 'required' attribute from input fields
+        var inputs = sectionToHide.querySelectorAll('input[type="radio"]');
+        inputs.forEach(function(input) {
+            input.removeAttribute('required');
+        });
+
+      }
+    buttonToChange.innerHTML = "<button type='button' onclick='return showSection("+'"'+sectionId+'"'+","+'"'+buttonId+'"'+")'>Покажи раздела</button>";
+  }
+
+    // Function to show a section
+    function showSection(sectionId,buttonId) {
+      var sectionToShow = document.getElementById(sectionId);
+      var buttonToChange = document.getElementById(buttonId);
+      if (sectionToShow) {
+        // Hide the section
+        sectionToShow.classList.remove('hidden');
+
+        // Remove 'required' attribute from input fields
+        var inputs = sectionToShow.querySelectorAll('input[type="radio"]');
+        inputs.forEach(function(input) {
+            input.setAttribute('required','');
+        });
+      }
+    buttonToChange.innerHTML = "<button type='button' onclick='return hideSection("+'"'+sectionId+'"'+","+'"'+buttonId+'"'+")'>Пропуснете раздела</button>";
+  }
+
+    // Function to update the radar chart
+    function updateRadarChart() {
+        if (radarChart) {
+            radarChart.destroy();
+        }
+        radarChart = new Chart(ctx, {
+            type: 'radar',
+            data: chartData,
+            options: {
+                aspectRatio: 1.5,
+                scales: {
+                    r: {
+                        pointLabels: {
+                            font: {
+                              size: 13,
+                            },
+                        },
+                        beginAtZero: true,
+                        max: 100,
+                    },
+                },
+            },
+        });
+    }
+
+    var form = document.getElementById("quizForm");
+    function handleForm(event) { event.preventDefault(); } 
+    form.addEventListener('submit', handleForm);
+    
+    function calculateResults() {
+
+        var score = 0;
+        var moduleNames = [
+          "Тематичен модул 1: Онлайн комуникация", 
+          "Тематичен модул 2: Проектиране на смесени формати за напътствия", 
+          "Тематичен модул 3: Цифрови ресурси и инструменти",
+          "Тематичен модул 4: Безопасност и правила в смесеното ориентиране"] //list of module names (for string use)
+        var sectionLabels = [
+        ["Онлайн комуникация"],
+        ["Проектиране на смесени"," формати за напътствия"],
+        ["Цифрови ресурси"," и инструменти"],
+        ["Безопасност и правила"," в смесеното ориентиране"],
+        ]
+        var sections = document.getElementsByTagName("TNAsection"); //creates a list of sections
+        var sectionAverages = []; //creates list for sections averages
+        var recommendationsList = new String(); //string for creating a html list of recommended modules for completion
+        var contentSections = document.getElementsByClassName("sectionContent");
+
+        var minimumSectionCount = sections.length;
+        for (var i = sections.length - 1; i >= 0; i--) {
+          if (contentSections[i].classList.contains('hidden')) {
+            minimumSectionCount --;
+          }
+        }
+
+        if (minimumSectionCount < 3) {
+          if ((3 - minimumSectionCount) == 1) {
+            var belowMinText = "Трябва да попълните поне 3 раздела. \n \nМоля, попълнете още 1 раздел.";
+          } else {
+            var belowMinText = "Трябва да попълните поне 3 раздела. \n \nPlease complete " + (3 - minimumSectionCount) + " more sections.";
+          }
+
+          window.alert(belowMinText);
+          return;
+        }
+
+        var downloadButton = document.getElementById("downloadButton");
+        downloadButton.innerHTML = "<button class='resultsButton' onclick='downloadChart()'>Изтегляне на диаграма</button><button class='resultsButton' onclick='downloadFull()'>Изтегляне на пълните резултати</button><button class='resultsButton' onclick='window.print()'>Отпечатване на страницата</button>"
+
+        //loops through each section to calcualte results
+        for (var i = 0; i < sections.length; i++) { 
+            var sectionScore = 0;
+            var sectionAverage = 0;
+            var sectionLength = 0; 
+            var questions = sections[i].getElementsByTagName('input');
+            for (var j = 0; j < questions.length; j++) {
+                if (questions[j].checked) {
+                    score += parseFloat(questions[j].value);
+                    sectionScore += parseFloat(questions[j].value);
+                    sectionLength += 1;
+                } else {
+                    score += 0;
+                    sectionScore += 0;
+                }
+            }
+            sectionAverage = sectionScore/sectionLength; //calculate section 
+            sectionAverage = sectionAverage*100; //converts to percentage
+            sectionAverage = sectionAverage.toFixed(2); //rounds to 2 decimal figures
+            sectionAverages.push(sectionAverage);
+        }
+
+        for (var i = sections.length - 1; i >= 0; i--) {
+          if (contentSections[i].classList.contains('hidden')) {
+            sectionAverages.splice(i, 1);
+            sectionLabels.splice(i, 1);
+            moduleNames.splice(i, 1);
+          }
+        }
+        for (var i = moduleNames.length - 1; i >= 0; i--) {
+          if (sectionAverages[i] <= 50) { //check for score threshold and add section to recommendation list if too low
+          recommendationsList += '<li>'+ moduleNames[i] + '</li>';
+          }
+        }
+        chartData.datasets[0].data = sectionAverages;
+        chartData.labels = sectionLabels;
+        updateRadarChart();
+
+        var narrativeBox = document.getElementById("narrativeBox");
+        if (recommendationsList.length === 0){
+          narrativeBox.innerHTML = "<div class='resultsPara'><p>Добре свършена работа! Няма специфични области, които да се нуждаят от внимание.<br><br>За по-подробни резултати вижте таблицата по-долу:</p></div>";
+
+        } else {
+          narrativeBox.innerHTML = "<div class='resultsPara'><p> Въз основа на резултатите от теста ви препоръчваме да обърнете специално внимание на следните модули:<br><ul>" + recommendationsList + "</ul><br><br>За по-подробни резултати вижте таблицата по-долу:</p></div>";
+        }
+
+
+        window.scrollBy({
+          left: 0, 
+          top: 600,
+          behavior:'smooth'
+        })
+      }
+
+      function downloadFull(){
+
+        html2canvas(document.getElementById('mainBox')).then(function (canvas) {
+          // Convert the image of the canvas to a blob
+          canvas.toBlob(function (blob) {
+            // Use FileSaver.js to download the blob as a PNG
+            saveAs(blob, "DISCO_SelfAssessement_Result_Full.png");
+          });
+        });
+      };
+
+      function downloadChart() {
+        // Captura el canvas y lo convierte en una imagen usando html2canvas / Capture the canvas and convert it to an image using html2canvas
+        html2canvas(document.getElementById('results')).then(function (canvas) {
+          // Convert the image of the canvas to a blob
+          canvas.toBlob(function (blob) {
+            // Use FileSaver.js to download the blob as a PNG
+            saveAs(blob, "DISCO_SelfAssessement_Result_Chart.png");
+          });
+      });
+
+
+    }
+</script>
+  </body>
+</html>
