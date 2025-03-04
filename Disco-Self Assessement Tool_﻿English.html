@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DISCO Self-Assessment Tool</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="assessementStyles.css">
+    <script>
+      function sendHeightToParent() {
+          var height = document.documentElement.scrollHeight;
+          window.parent.postMessage({ type: 'resizeIframe', height: height }, '*');
+      }
+
+      window.onload = sendHeightToParent;
+      window.onresize = sendHeightToParent;
+    </script>
+  </head>
+  <body>
+    <div class="mainBox" id="mainBox">
+      <h1>DISCO Self-Assessment Tool</h1>
+      <br>
+
+      <!-- Container for introduction and instructions -->
+      <!--<div class="introBox"> 
+       
+        <h3>Tool Introduction and Instructions</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>-->
+
+      <form id="quizForm" onsubmit="return calculateResults()">
+
+        <!-- Questionnaire start -->
+        <TNAsection id="Sec1" >
+        <div class="sectionContainer">
+          <div class="sectionHead">
+            <h3>Thematic module 1: Online Communication</h3>
+            <div class="skipButton" id="skipHide1">
+                <button type="button" onclick="return hideSection('secCont1','skipHide1')">Skip Section</button>
+            </div>
+          </div>
+          <div class="sectionContent" id="secCont1">
+            <div class="questionContainer">
+              <h4 class="questionDesc">1. How much a career counsellor prepares for an online guidance session does not influence the success of the session.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 1" required/>True</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 1" required/>False</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">2. What could you do as a career counsellor in order to endanger a trustful relationship between you and the client?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 2" required/>By repeating the contents of your client in your own words</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 2" required/>By listening carefully</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 2" required/>By criticizing the client for decisions he or she met in the past</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 2" required/>By keeping eye contact</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">3. Which of the following is a major benefit of communicating online as opposed to in person?</h4>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 3" required/>Greater convenience and accessibility for individuals who are located far away</p>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 3" required/>The capacity to interact face-to-face</p>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 3" required/>Simpler access to nonverbal clues</p>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 3" required/>Participants' emotional bonds are stronger</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">4. Technical requirements for effective online career guidance sessions are limited to having an internet connection.</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 4" required/>True</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 4" required/>False</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">5. You're participating in a career coaching session online. Which of the following behaviors exemplifies appropriate online conduct for the client and the career counselor?</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 5" required/>Not telling the other person that your microphone is muted and your camera is off.</p>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 5" required/>Breaking off the discussion to answer private communications.</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 5" required/>Maintaining a calm, distraction-free atmosphere and dressing professionally.</p>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 5" required/>Making the conversation more informal by using slang and colloquial vocabulary.</p>
+            </div>
+          </div>
+        </div>
+        </TNAsection>
+        <TNAsection id="Sec2">
+        <div class="sectionContainer">
+          <div class="sectionHead">
+          <h3>Thematic module 2: Designing Blended Guidance Formats</h3>
+            <div class="skipButton" id="skipHide2">
+                <button type="button" onclick="return hideSection('secCont2','skipHide2')">Skip Section</button>
+            </div>
+          </div>
+          <div class="sectionContent" id="secCont2">
+            <div class="questionContainer">
+              <h4 class="questionDesc">6. Blended career guidance requires only digital tools because traditional methods cannot meet modern client needs.</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 6" required/>True</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 6" required/>False</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">7. To assess blended career guidance effectively, practitioners need to evaluate how combining traditional and digital methods impacts client engagement and results.</h4>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 7" required/>True</p>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 7" required/>False</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">8. What key considerations should practitioners prioritize when merging traditional and digital resources to enhance career guidance delivery?</h4>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 8" required/>Prioritizing digital assessments over traditional techniques.</p>
+                <p class="choiceLabel"><input type="radio" value="1" name="question 8" required/>Customizing the blend to suit the specific needs of clients.</p>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 8" required/>Exclusively employing online guidance methodologies.</p>
+                <p class="choiceLabel"><input type="radio" value="0" name="question 8" required/>Avoiding digital integration altogether to maintain traditional authenticity.</p>
+            </div> 
+            <div class="questionContainer">
+              <h4 class="questionDesc">9. Which approach ensures the seamless transition of traditional career guidance strategies into a blended environment supported by digital tools?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 9" required/>Relying on stable internet connections without modifying traditional techniques.</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 9" required/>Avoiding adaptations and using unmodified traditional methods.</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 9" required/>Strategically integrating new digital strategies to complement traditional techniques.</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 9" required/>Implementing the most advanced equipment without regard to practicality or training.</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">10. Understanding the stages of the career guidance process—such as preparation, assessment, review, and evaluation—is critical for designing effective client engagement strategies in blended formats.</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 10" required/>True</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 10" required/>False</p>
+            </div>
+          </div>
+        </div>
+        </TNAsection>
+        <TNAsection id="Sec3">
+        <div class="sectionContainer">
+          <div class="sectionHead">
+            <h3>Thematic module 3: Digital Resources and Tools</h3>
+              <div class="skipButton" id="skipHide3">
+                  <button type="button" onclick="return hideSection('secCont3','skipHide3')">Skip Section</button>
+              </div>
+            </div>
+          <div class="sectionContent" id="secCont3">
+            <div class="questionContainer">
+              <h4 class="questionDesc">11. What criteria should you use to evaluate the suitability of a digital tool for career counselling?</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 11" required/>Compatibility with the client's needs and preferences</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 11" required/>Availability of offline support for digital tools</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 11" required/>Popularity of the tool among other professionals</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">12. Which of the following best describes "obsolescence"?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 12" required/>The strategy of designing products to have a limited lifespan to encourage repeat purchases.</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 12" required/>The state of being outdated or no longer in use, often due to advancements in technology.</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 12" required/>The natural process of wear and tear that reduces the functionality of a product over time.</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 12" required/>The practice of recycling old products to create new ones.</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">13. What are the five main categories of digital skills?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 13" required/>Information/data literacy, Communication and collaboration, Digital content and creation, Safety, Repairing hardware</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 13" required/>Information/data literacy, Communication and collaboration, Digital content and creation, Safety, Problem solving</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 13" required/>Information/data literacy, Communication and collaboration, Digital content and creation, Coding, Problem solving</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 13" required/>Information/data literacy, Internet surfing, Digital content and creation, Safety, Problem solving</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">14. The frequency of using the digital tool by the counsellor guarantees its effectiveness.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 14" required/>True</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 14" required/>False</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">15. Which of these tools cannot be used to create a mind map?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 15" required/>Padlet</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 15" required/>Mindmup</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 15" required/>Mentimeter</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 15" required/>Flinga</p>
+            </div>
+          </div>
+        </div>
+        </TNAsection>
+        <TNAsection id="Sec4">
+        <div class="sectionContainer">
+          <div class="sectionHead">
+            <h3>Thematic module 4: Safety & Regulations in Blended Guidance</h3>
+              <div class="skipButton" id="skipHide4">
+                  <button type="button" onclick="return hideSection('secCont4','skipHide4')">Skip Section</button>
+              </div>
+            </div>
+          <div class="sectionContent" id="secCont4">
+            <div class="questionContainer">
+              <h4 class="questionDesc">16. GDPR regulations do not apply in career guidance settings if personal data is collected offline and is not later digitized or processed.</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 16" required/>True</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 16" required/>False</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">17. What is one of the key principles of GDPR?</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 17" required/>Data should be collected only for specified, explicit, and legitimate purposes, and not used for unrelated activities.</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 17" required/>Data can be shared between organizations as long as it comply with the legitimate interest principle and this has agreed by individual's interests.</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 17" required/>Data can be kept for as long as necessary, as long as it is protected from unauthorized access.</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">18. How should you handle personal data collected from clients?</h4>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 18" required/>Share it with third-party organizations for job matching, as long as the client benefits and its explicit in the privacy policies.</p>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 18" required/>Store it securely and ensure explicit consent is obtained for its use and sharing.</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 18" required/>Use it for other relevant purposes that may help the client, under the legitimate use principle.</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">19. When working with minors and vulnerable groups, what is the first step in safeguarding?</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 19" required/>Report any immediate concerns to the appropriate safeguarding authorities.</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 19" required/>Discuss the concerns with colleagues and seek advice before taking further action.</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 19" required/>Contact parents while, wait for the minor or vulnerable individual to explicitly mention any issues before addressing concerns.</p>
+            </div>
+            <div class="questionContainer">
+              <h4 class="questionDesc">20. What is an effective way to promote self-care practices and stress reduction methods to clients?</h4>
+                  <p class="choiceLabel"><input type="radio" value="1" name="question 20" required/>Provide relevant materials and tips on self-care during consultations</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 20" required/>Focus solely on career-related topics to maintain a professional boundary</p>
+                  <p class="choiceLabel"><input type="radio" value="0" name="question 20" required/>Overlook any signs of stress or mental health concerns as they do not pertain to career guidance, and make a referral to other practitioner or professional.</p>
+            </div>
+          </div>
+        </div>
+        </TNAsection>
+      
+        <!-- Questionnaire end -->
+        <div class="btn-block">
+          <button type="submit" onsubmit="return calculateResults()">Show results</button>        
+        </div>
+      </form>
+          <!-- container for narrative box and chart -->
+    <div class="results" id="results"> 
+        <div class="narrativeBox" id="narrativeBox">
+        </div>
+
+      <div class="radarBox"> 
+        <canvas id="radarChart">
+      </canvas>
+      </div>
+    </div>
+    <div class="resultsButtonSection" id="downloadButton">
+    </div>
+  </div>
+    </div>
+
+
+
+
+
+<script>
+    const ctx = document.getElementById('radarChart').getContext('2d');
+    let radarChart;
+    
+    const chartData = {
+        labels: [], // Labels for each data point
+        datasets: [
+            {
+                label: 'Scores',
+                data: [], // Data values
+                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Fill color
+                borderColor: 'rgba(75, 192, 192, 1)', // Line color
+                borderWidth: 2,
+            },
+        ],
+    };
+
+    // Function to hide a section
+    function hideSection(sectionId,buttonId) {
+      var sectionToHide = document.getElementById(sectionId);
+      var buttonToChange = document.getElementById(buttonId);
+      if (sectionToHide) {
+        // Hide the section
+        sectionToHide.classList.add('hidden');
+
+        // Remove 'required' attribute from input fields
+        var inputs = sectionToHide.querySelectorAll('input[type="radio"]');
+        inputs.forEach(function(input) {
+            input.removeAttribute('required');
+        });
+
+      }
+    buttonToChange.innerHTML = "<button type='button' onclick='return showSection("+'"'+sectionId+'"'+","+'"'+buttonId+'"'+")'>Show Section</button>";
+  }
+
+    // Function to show a section
+    function showSection(sectionId,buttonId) {
+      var sectionToShow = document.getElementById(sectionId);
+      var buttonToChange = document.getElementById(buttonId);
+      if (sectionToShow) {
+        // Hide the section
+        sectionToShow.classList.remove('hidden');
+
+        // Remove 'required' attribute from input fields
+        var inputs = sectionToShow.querySelectorAll('input[type="radio"]');
+        inputs.forEach(function(input) {
+            input.setAttribute('required','');
+        });
+      }
+    buttonToChange.innerHTML = "<button type='button' onclick='return hideSection("+'"'+sectionId+'"'+","+'"'+buttonId+'"'+")'>Skip Section</button>";
+  }
+
+    // Function to update the radar chart
+    function updateRadarChart() {
+        if (radarChart) {
+            radarChart.destroy();
+        }
+        radarChart = new Chart(ctx, {
+            type: 'radar',
+            data: chartData,
+            options: {
+                aspectRatio: 1.5,
+                scales: {
+                    r: {
+                        pointLabels: {
+                            font: {
+                              size: 13,
+                            },
+                        },
+                        beginAtZero: true,
+                        max: 100,
+                    },
+                },
+            },
+        });
+    }
+
+    var form = document.getElementById("quizForm");
+    function handleForm(event) { event.preventDefault(); } 
+    form.addEventListener('submit', handleForm);
+    
+    function calculateResults() {
+
+        var score = 0;
+        var moduleNames = [
+          "Thematic module 1: Online Communication", 
+          "Thematic module 2: Designing Blended Guidance Formats", 
+          "Thematic module 3: Digital Resources and Tools",
+          "Thematic module 4: Safety & Regulations in Blended Guidance"] //list of module names (for string use)
+        var sectionLabels = [
+        ["Online Communication"],
+        ["Designing Blended"," Guidance Formats"],
+        ["Digital Resources"," and Tools"],
+        ["Safety & Regulations"," in Blended Guidance"],
+        ]
+        var sections = document.getElementsByTagName("TNAsection"); //creates a list of sections
+        var sectionAverages = []; //creates list for sections averages
+        var recommendationsList = new String(); //string for creating a html list of recommended modules for completion
+        var contentSections = document.getElementsByClassName("sectionContent");
+
+        var minimumSectionCount = sections.length;
+        for (var i = sections.length - 1; i >= 0; i--) {
+          if (contentSections[i].classList.contains('hidden')) {
+            minimumSectionCount --;
+          }
+        }
+
+        if (minimumSectionCount < 3) {
+          if ((3 - minimumSectionCount) == 1) {
+            var belowMinText = "You need to complete at least 3 sections. \n \nPlease complete 1 more section.";
+          } else {
+            var belowMinText = "You need to complete at least 3 sections. \n \nPlease complete " + (3 - minimumSectionCount) + " more sections.";
+          }
+
+          window.alert(belowMinText);
+          return;
+        }
+
+        var downloadButton = document.getElementById("downloadButton");
+        downloadButton.innerHTML = "<button class='resultsButton' onclick='downloadChart()'>Download Chart</button><button class='resultsButton' onclick='downloadFull()'>Download Full Results</button><button class='resultsButton' onclick='window.print()'>Print Page</button>"
+
+        //loops through each section to calcualte results
+        for (var i = 0; i < sections.length; i++) { 
+            var sectionScore = 0;
+            var sectionAverage = 0;
+            var sectionLength = 0; 
+            var questions = sections[i].getElementsByTagName('input');
+            for (var j = 0; j < questions.length; j++) {
+                if (questions[j].checked) {
+                    score += parseFloat(questions[j].value);
+                    sectionScore += parseFloat(questions[j].value);
+                    sectionLength += 1;
+                } else {
+                    score += 0;
+                    sectionScore += 0;
+                }
+            }
+            sectionAverage = sectionScore/sectionLength; //calculate section 
+            sectionAverage = sectionAverage*100; //converts to percentage
+            sectionAverage = sectionAverage.toFixed(2); //rounds to 2 decimal figures
+            sectionAverages.push(sectionAverage);
+        }
+
+        for (var i = sections.length - 1; i >= 0; i--) {
+          if (contentSections[i].classList.contains('hidden')) {
+            sectionAverages.splice(i, 1);
+            sectionLabels.splice(i, 1);
+            moduleNames.splice(i, 1);
+          }
+        }
+        for (var i = moduleNames.length - 1; i >= 0; i--) {
+          if (sectionAverages[i] <= 50) { //check for score threshold and add section to recommendation list if too low
+          recommendationsList += '<li>'+ moduleNames[i] + '</li>';
+          }
+        }
+        chartData.datasets[0].data = sectionAverages;
+        chartData.labels = sectionLabels;
+        updateRadarChart();
+
+        var narrativeBox = document.getElementById("narrativeBox");
+        if (recommendationsList.length === 0){
+          narrativeBox.innerHTML = "<div class='resultsPara'><p>Well done! There are no specific areas which seem to need attention.<br><br>For more detailed results, see the chart below:</p></div>";
+
+        } else {
+          narrativeBox.innerHTML = "<div class='resultsPara'><p> Based on your results from the quiz, we recommend you should pay particular attention to the following modules:<br><ul>" + recommendationsList + "</ul><br><br>For more detailed results, see the chart below:</p></div>";
+        }
+
+
+        window.scrollBy({
+          left: 0, 
+          top: 600,
+          behavior:'smooth'
+        })
+      }
+
+      function downloadFull(){
+
+        html2canvas(document.getElementById('mainBox')).then(function (canvas) {
+          // Convert the image of the canvas to a blob
+          canvas.toBlob(function (blob) {
+            // Use FileSaver.js to download the blob as a PNG
+            saveAs(blob, "DISCO_SelfAssessement_Result_Full.png");
+          });
+        });
+      };
+
+      function downloadChart() {
+        // Captura el canvas y lo convierte en una imagen usando html2canvas / Capture the canvas and convert it to an image using html2canvas
+        html2canvas(document.getElementById('results')).then(function (canvas) {
+          // Convert the image of the canvas to a blob
+          canvas.toBlob(function (blob) {
+            // Use FileSaver.js to download the blob as a PNG
+            saveAs(blob, "DISCO_SelfAssessement_Result_Chart.png");
+          });
+      });
+
+
+    }
+</script>
+  </body>
+</html>
